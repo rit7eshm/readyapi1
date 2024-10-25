@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource xmlns:con="http://eviware.com/soapui/config" name="/auth/login" path="/auth/login" id="dd4c98ee-5370-4e5b-a677-442edbe9ad19">
+  <con:settings id="6eca9da2-272d-404c-9baa-1009945a07c9">
+    <con:setting id="dd4c98ee-5370-4e5b-a677-442edbe9ad19fileName">%2Fauth%2Flogin</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="login" id="1c50c14c-6549-40e1-9e58-8e031d01768f" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "email" : "string",
+  "password" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="ce5bfb34-4f6f-4108-aeee-cb7889c4d0bb" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:request>{\r
+  "email" : "string",\r
+  "password" : "string"\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

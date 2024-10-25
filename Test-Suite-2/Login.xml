@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="d462a07c-c730-41e4-b2fa-02249de3ab22" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="Login" searchProperties="true" timeout="0">
+  <con:settings id="7239da2c-85f9-4cb7-afe6-9ec829235859">
+    <con:setting id="cc9d59c1-d231-4ff7-a15e-7345c7d50294fileName">Login</con:setting>
+    <con:setting id="d462a07c-c730-41e4-b2fa-02249de3ab22fileName">Login</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="REST Request" id="4568a3f1-4f3f-4562-b1a7-f86edaa0ad6b">
+    <con:settings/>
+    <con:config service="Products Management API" resourcePath="/auth/login" methodName="login" xsi:type="con:RestRequestStep">
+      <con:restRequest name="REST Request" id="ce5bfb34-4f6f-4108-aeee-cb7889c4d0bb" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>http://localhost:9090</con:endpoint>
+        <con:request>{\r
+  "email" : "user@email.com",\r
+  "password" : "upass"\r
+}</con:request>
+        <con:originalUri>http://localhost/auth/login</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="84a7a994-a393-42ea-a4b2-f376aaba83a9" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

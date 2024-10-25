@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:RestService" id="0be3388f-623b-45c1-9c7f-b86f1306ca16" name="Products Management API" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" definitionUrl="file:/D:/Shared/MyTrainingRepos/ready-api/api-docs.json">
+  <con:description id="bf74fb62-cd70-436f-8ed5-b8f2e495648e">This API exposes endpoints to manage products.</con:description>
+  <con:settings id="a810d699-96af-49e1-91f3-2832280a7cef">
+    <con:setting id="0be3388f-623b-45c1-9c7f-b86f1306ca16fileName">Products-Management-API</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart="file:/D:/Shared/MyTrainingRepos/ready-api/api-docs.json">
+    <con:part>
+      <con:url>file:/D:/Shared/MyTrainingRepos/ready-api/api-docs.json</con:url>
+      <con:content>{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Products Management API",
+        "description": "This API exposes endpoints to manage products.",
+        "termsOfService": "https://www.netmind.es/terms",
+        "contact": {
+            "name": "Contact name",
+            "url": "https://www.netmind.es",
+            "email": "contact@c.com"
+        },
+        "license": {
+            "name": "MIT License",
+            "url": "https://choosealicense.com/licenses/mit/"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:9090",
+            "description": "Server URL in Development environment"
+        },
+        {
+            "url": "https://localhost:8443",
+            "description": "Server URL in Production environment"
+        }
+    ],
+    "security": [
+        {
+            "Bearer Authentication": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "API de productos",
+            "description": "Esta es una api para crear y consumir productos"
+        }
+    ],
+    "paths": {
+        "/products/{pid}": {
+            "get": {
+                "tags": [
+                    "API de productos"
+                ],
+                "summary": "Obtener un producto",
+                "description": "Endpoint para obtener un producto concreto",
+                "operationId": "getOne",
+                "parameters": [
+                    {
+                        "name": "pid",
+                        "in": "path",
+                        "description": "El identificador del producto",
+                        "required": true,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 234
+                    }
+                ],
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Todo bien",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Producto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "El producto no existe",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Producto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "API de productos"
+                ],
+                "operationId": "updateProduct",
+                "parameters": [
+                    {
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Producto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "API de productos"
+                ],
+                "operationId": "deleteProduct",
+                "parameters": [
+                    {
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "user-service-controller"
+                ],
+                "operationId": "getAllUsers",
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user-service-controller"
+                ],
+                "operationId": "createUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "API de productos"
+                ],
+                "operationId": "getAll",
+                "parameters": [
+                    {
+                        "name": "text",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Producto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "API de productos"
+                ],
+                "summary": "Crear un producto",
+                "description": "Endpoint para crear un producto concreto",
+                "operationId": "create",
+                "requestBody": {
+                    "description": "El producto a crear sin Id.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Producto"
+                            }
+                        },
+                        "application/atom+xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Producto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "412": {
+                        "description": "El producto enviado no es correcto",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "202": {
+                        "description": "Todo bien",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Producto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth-service"
+                ],
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "412": {
+                        "description": "Precondition Failed",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/StatusMessage"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "StatusMessage": {
+                "type": "object",
+                "properties": {
+                    "status_code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Producto": {
+                "required": [
+                    "name",
+                    "serial"
+                ],
+                "type": "object",
+                "properties": {
+                    "Id": {
+                        "type": "integer",
+                        "description": "El identificador único del producto. Debe ser un número mayor que 0. No es requerido en POST y PUT",
+                        "format": "int64",
+                        "example": 234
+                    },
+                    "name": {
+                        "maxLength": 20,
+                        "minLength": 3,
+                        "type": "string"
+                    },
+                    "serial": {
+                        "type": "string"
+                    }
+                },
+                "description": "Representa un producto a intercambiar"
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "ADMIN",
+                            "GESTOR",
+                            "CLIENTE"
+                        ]
+                    }
+                }
+            },
+            "AuthRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "Bearer_Authentication": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}</con:content>
+      <con:type>https://swagger.io/openapiv3/specification</con:type>
+    </con:part>
+  </con:definitionCache>
+  <con:endpoints>
+    <con:endpoint>http://localhost:9090</con:endpoint>
+    <con:endpoint>https://localhost:8443</con:endpoint>
+  </con:endpoints>
+</con:interface>

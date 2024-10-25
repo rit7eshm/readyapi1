@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource xmlns:con="http://eviware.com/soapui/config" name="/users" path="/users" id="102df16b-ed2e-4d20-af0a-3671a5a8edb0">
+  <con:settings id="0dcb0bf7-7f47-4bf1-8783-66f8bac7a9cd">
+    <con:setting id="102df16b-ed2e-4d20-af0a-3671a5a8edb0fileName">%2Fusers</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="getAllUsers" id="b665271f-b650-4e30-b73a-fe7c4183741d" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+      <con:sampleContent>[ {
+  "id" : 0,
+  "email" : "string",
+  "password" : "string",
+  "role" : "USER"
+} ]</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="5080edb0-e939-423d-8ad7-2aafff360c15" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="createUser" id="2a080706-09fe-41d6-8822-3a98b1c68e07" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+      <con:sampleContent>"string"</con:sampleContent>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "id" : 0,
+  "email" : "string",
+  "password" : "string",
+  "role" : "USER"
+}</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="e236e6e7-102d-4e32-bbe7-a6982039a946" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:request>{\r
+  "id" : 0,\r
+  "email" : "string",\r
+  "password" : "string",\r
+  "role" : "USER"\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

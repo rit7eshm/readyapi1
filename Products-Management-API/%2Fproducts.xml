@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource xmlns:con="http://eviware.com/soapui/config" name="/products" path="/products" id="4ba5422c-7a0b-4f7b-a726-981ed71e5fed">
+  <con:settings id="bb7578b9-8f1c-4b68-81aa-67f9d0abecb5">
+    <con:setting id="4ba5422c-7a0b-4f7b-a726-981ed71e5fedfileName">%2Fproducts</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="getAll" id="629584ff-a0ef-4c61-8f07-0ffe555ab696" method="GET">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>text</con:name>
+        <con:style>QUERY</con:style>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+    </con:representation>
+    <con:request name="Request 1" id="ea762b70-84f0-47fa-b0b3-a98b762b8c0b" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="create" id="4870c8be-3757-471c-9a2a-d12570c0740a" method="POST">
+    <con:description>Endpoint para crear un producto concreto</con:description>
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>El producto enviado no es correcto</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>202</con:status>
+      <con:params/>
+      <con:description>Todo bien</con:description>
+      <con:sampleContent>{
+  "Id" : 234,
+  "name" : "string",
+  "serial" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "Id" : 234,
+  "name" : "string",
+  "serial" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/atom+xml</con:mediaType>
+      <con:params/>
+      <con:sampleContent><![CDATA[<object>
+   <Id>234</Id>
+   <name>string</name>
+   <serial>string</serial>
+</object>]]></con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="884a6171-b2f3-4972-bfe9-06500abb0061" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:request>{\r
+  "Id" : 234,\r
+  "name" : "string",\r
+  "serial" : "string"\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:parameters/>
+    </con:request>
+    <con:request name="Request 2" id="9aa334cb-bd63-4cdb-bb90-ee63d4c2e6ad" mediaType="application/atom+xml">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:request><![CDATA[<object>\r
+   <Id>234</Id>\r
+   <name>string</name>\r
+   <serial>string</serial>\r
+</object>]]></con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

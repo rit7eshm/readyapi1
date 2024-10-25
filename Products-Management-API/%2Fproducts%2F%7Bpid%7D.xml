@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource xmlns:con="http://eviware.com/soapui/config" name="/products/{pid}" path="/products/{pid}" id="6c8dc9e5-ab53-4c5c-bb61-f4fb4e6807dc">
+  <con:settings id="f0df2979-ec24-41bd-9276-38f2699a37fd">
+    <con:setting id="6c8dc9e5-ab53-4c5c-bb61-f4fb4e6807dcfileName">%2Fproducts%2F%7Bpid%7D</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="getOne" id="60c6758b-af7e-4f1e-b6a0-9652729dcaa2" method="GET">
+    <con:description>Endpoint para obtener un producto concreto</con:description>
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>pid</con:name>
+        <con:style>TEMPLATE</con:style>
+        <con:description>El identificador del producto</con:description>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>Todo bien</con:description>
+      <con:sampleContent>{
+  "Id" : 234,
+  "name" : "string",
+  "serial" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+      <con:description>El producto no existe</con:description>
+      <con:sampleContent>{
+  "Id" : 234,
+  "name" : "string",
+  "serial" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="a236ca99-aaf2-40ea-ae59-1edce1f9ad92" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="deleteProduct" id="97a35508-656a-4fee-bbac-0cdddd0426fe" method="DELETE">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>pid</con:name>
+        <con:style>TEMPLATE</con:style>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+    </con:representation>
+    <con:request name="Request 1" id="4dbaeaec-ca2b-4be1-bd4d-8e1270a90d65" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="updateProduct" id="5fae6fa2-9056-4f85-90db-c3b0278154a8" method="PUT">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>pid</con:name>
+        <con:style>TEMPLATE</con:style>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>412</con:status>
+      <con:params/>
+      <con:description>Precondition Failed</con:description>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>*/*</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:description>OK</con:description>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+      <con:sampleContent>{
+  "Id" : 234,
+  "name" : "string",
+  "serial" : "string"
+}</con:sampleContent>
+    </con:representation>
+    <con:request name="Request 1" id="702e9e7e-4661-4e05-be2f-e76a7ed2c61a" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://localhost:9090</con:endpoint>
+      <con:request>{\r
+  "Id" : 234,\r
+  "name" : "string",\r
+  "serial" : "string"\r
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>
